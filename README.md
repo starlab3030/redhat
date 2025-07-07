@@ -1,6 +1,9 @@
 # 외부 연결을 위한 리포지토리
 
-<img align="left" src="images/이승일--II_컴퓨터.png" height="300px" hrspace="25px" title="100px" alt="안녕"></img>
+<img align="left" src="images/이승일--II_컴퓨터.png" height="100px" hrspace="25px" title="100px" alt="안녕"></img>
+
+**앤서블 샘플 데모**
+* [NHIS](./ansible/nhis/README.md)
 
 <br>
 <br>

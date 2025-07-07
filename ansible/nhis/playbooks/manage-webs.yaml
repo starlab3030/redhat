@@ -1,0 +1,36 @@
+---
+- name: Manage Web Servers
+  hosts: "{{ HOST_NAME | default('all') }}"
+  gather_facts: false
+  tasks:
+
+    - name: Ping "{{ HOST_NAME }}"
+      ansible.builtin.ping:
+      when: OPS_CMD|default('None') is match("ping")
+
+    - name: Install httpd package to "{{ HOST_NAME }}"
+      ansible.builtin.dnf:
+        name: httpd
+        state: present
+      when: OPS_CMD|default('None') is match("install")
+
+    - name: Check status of httpd in "{{ HOST_NAME }}"
+      ansible.builtin.service_facts:
+      when: OPS_CMD|default('None') is match("status")
+
+    - name: Print status of httpd in "{{ HOST_NAME }}"
+      ansible.builtin.debug:
+        var: ansible_facts.services['httpd.service']
+      when: OPS_CMD|default('None') is match("status")
+
+    - name: Start httpd service in "{{ HOST_NAME }}"
+      ansible.builtin.service:
+        name: httpd
+        state: started
+      when: OPS_CMD|default('None') is match("start")
+
+    - name: Stop httpd service in "{{ HOST_NAME }}"
+      ansible.builtin.service:
+        name: httpd
+        state: stopped
+      when: OPS_CMD|default('None') is match("stop")

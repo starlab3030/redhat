@@ -1,0 +1,8 @@
+[all:vars]
+ansible_ssh_user=root
+ansible_ssh_pass=redhat
+
+[web_all]
+rhel94-web1
+rhel88-web2
+rhel10-web3
